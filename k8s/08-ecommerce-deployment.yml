@@ -15,30 +15,30 @@ spec:
     spec:
       containers:
         - name: easyshop
-          image: trainwithshubham/easyshop-app:1
+          image: trainwithshubham/easyshop-app:1   #change 
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
           envFrom:
             - configMapRef:
-                name: easyshop-config
+                name: ecommerce-config
             - secretRef:
-                name: easyshop-secrets
+                name: ecommerce-secrets
           env:
             - name: NEXTAUTH_URL
               valueFrom:
                 configMapKeyRef:
-                  name: easyshop-config
+                  name: ecommerce-config
                   key: NEXTAUTH_URL
             - name: NEXTAUTH_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: easyshop-secrets
+                  name: ecommerce-secrets
                   key: NEXTAUTH_SECRET
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: easyshop-secrets
+                  name: ecommerce-secrets
                   key: JWT_SECRET
           resources:
             requests:

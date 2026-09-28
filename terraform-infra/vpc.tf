@@ -1,7 +1,6 @@
 module "vpc" {
-
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 4.0"
+  version = "6.7.3"
 
   name            = local.name
   cidr            = local.vpc_cidr
@@ -15,11 +14,9 @@ module "vpc" {
   public_subnet_tags = {
     "kubernetes.io/role/elb" = 1
   }
-
   private_subnet_tags = {
     "kubernetes.io/role/internal-elb" = 1
   }
-   # Ensure public subnets auto-assign public IPs
-  map_public_ip_on_launch = true
 
+  map_public_ip_on_launch = true
 }

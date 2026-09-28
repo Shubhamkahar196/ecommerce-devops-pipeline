@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -30,10 +28,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-# .env
-# .env.local
-# .env.*
+# local env files (secrets, kabhi commit mat karo)
+.env.local
+.env.*.local
 
 # vercel
 .vercel
@@ -48,24 +45,16 @@ logs/
 # cache
 .cache/
 .npm/
+.eslintcache
+.stylelintcache
 
 # OS generated files
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional stylelint cache
-.stylelintcache
 
 # Temporary files
 *.swp
@@ -76,20 +65,24 @@ Thumbs.db
 *.mongodb
 mongodb/
 
-terraform/.terraform/*
-terraform/terra-key.pub
-terraform/terra-key
-terraform/terraform.tfstate*
-terraform/.terraform.lock.hcl
-terraform/.terraform/modules/*
+# ---------- Terraform (terraform-infra/) ----------
+# provider/module downloads
+terraform-infra/.terraform/
 
-.terraform.tfstate.lock.info
-terraform/.terraform
-.terraform.lock.hcl
-.terraform
-terraform.tfstate
-terraform.tfstate.backup
-terraform/terraform.tfstate
-terraform/terraform.tfstate.backup
-terra-key.pub
-terra-key
+# state files (isme secrets/resource details hote hain)
+terraform-infra/*.tfstate
+terraform-infra/*.tfstate.*
+terraform-infra/.terraform.tfstate.lock.info
+
+# crash logs aur local overrides
+terraform-infra/crash.log
+terraform-infra/crash.*.log
+terraform-infra/override.tf
+terraform-infra/override.tf.json
+terraform-infra/*_override.tf
+terraform-infra/*_override.tf.json
+
+# SSH keys
+terraform-infra/terra-key
+terraform-infra/terra-key.pub
+*.pem
