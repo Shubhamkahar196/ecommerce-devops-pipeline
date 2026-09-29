@@ -16,7 +16,7 @@ pipeline {
         }
         stage("Clone Repository"){
             steps {
-                git branch: 'main', url: "git url here"
+                git branch: 'main', url: "https://github.com/Shubhamkahar196/ecommerce-devops-pipeline.git"
             }
         }
         stage("Build Docker Images"){

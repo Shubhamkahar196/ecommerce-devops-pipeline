@@ -16,7 +16,7 @@ module "eks" {
 
 
   eks_managed_node_groups = {
-    tws-demo-ng = {
+    ecommerce-demo-ng = {
       min_size       = 2
       max_size       = 3
       desired_size   = 2
