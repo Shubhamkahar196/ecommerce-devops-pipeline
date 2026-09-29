@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: easyshop
-  namespace: easyshop
+  name: ecommerce
+  namespace: ecommerce
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: easyshop
+      app: ecommerce
   template:
     metadata:
       labels:
-        app: easyshop
+        app: ecommerce
     spec:
       containers:
-        - name: easyshop
-          image: trainwithshubham/easyshop-app:1   #change 
+        - name: ecommerce
+          image: shubhamkah/ecommerce-app:1   #change 
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
