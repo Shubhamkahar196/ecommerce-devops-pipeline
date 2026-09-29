@@ -68,12 +68,31 @@ pipeline {
             }
         }
 
-        stage('Deploy to kubernetes') {
-            steps {
-                sh """
-                    kubectl set image deployment/ecommerce-app ecommerce-app=${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
-                """
-            }
+        stage('Update Kubernetes Manifests') {
+    steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'github-credentials',
+            usernameVariable: 'GIT_USERNAME',
+            passwordVariable: 'GIT_PASSWORD'
+        )]) {
+            sh """
+                git config user.name "Jenkins CI"
+                git config user.email "shubhamnath5@gmail.com"
+
+                sed -i "s|image: shubhamkah/ecommerce-app:.*|image: shubhamkah/ecommerce-app:${DOCKER_IMAGE_TAG}|g" k8s/08-ecommerce-deployment.yml
+                sed -i "s|image: shubhamkah/ecommerce-migration:.*|image: shubhamkah/ecommerce-migration:${DOCKER_IMAGE_TAG}|g" k8s/12-migration-job.yml
+
+                if git diff --quiet; then
+                    echo "No changes to commit"
+                else
+                    git add k8s/*.yml
+                    git commit -m "Update image tags to ${DOCKER_IMAGE_TAG} [ci skip]"
+                    git remote set-url origin https://\${GIT_USERNAME}:\${GIT_PASSWORD}@github.com/Shubhamkahar196/ecommerce-devops-pipeline.git
+                    git push origin HEAD:main
+                fi
+            """
         }
+    }
+}
     }
 }
