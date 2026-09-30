@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ecommerce
-          image: shubhamkah/ecommerce-app:1   #change 
+          image: shubhamkah/ecommerce-app:3
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
