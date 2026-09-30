@@ -20,8 +20,8 @@ module "eks" {
       min_size       = 2
       max_size       = 3
       desired_size   = 2
-      instance_types = ["t2.large"]
-      capacity_type  = "SPOT"
+      instance_types = ["t3.large"]
+      capacity_type  = "ON_DEMAND"
       disk_size      = 35
 
       tags = {
