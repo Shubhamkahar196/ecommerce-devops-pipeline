@@ -12,7 +12,19 @@ module "eks" {
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.public_subnets
 
-  
+  addons = {
+    coredns = {
+      most_recent = true
+    }
+
+    kube-proxy = {
+      most_recent = true
+    }
+
+    vpc-cni = {
+      most_recent = true
+    }
+  }
 
 
   eks_managed_node_groups = {

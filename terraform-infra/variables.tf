@@ -8,10 +8,10 @@ locals {
   intra_subnets   = ["10.0.21.0/24", "10.0.22.0/24"]
 }
 
-variable "my_environment"{
-    description="This is the name of my environment"
-    type=string
-    
+variable "my_environment" {
+  description = "This is the name of my environment"
+  type        = string
+
 }
 
 variable "instance_type" {
@@ -20,12 +20,12 @@ variable "instance_type" {
 }
 
 variable "ami_id" {
-    description = "This is the ami id of ec2"
-    type = string
+  description = "This is the ami id of ec2"
+  type        = string
 
 }
 
-variable "aws_region"{
-    description = "This is region of ec2"
-    type = string
+variable "aws_region" {
+  description = "This is region of ec2"
+  type        = string
 }
