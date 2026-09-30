@@ -5,6 +5,7 @@ RUN apk add --no-cache python3 make g++
 COPY package*.json ./
 RUN npm ci
 COPY . .
+ENV NODE_OPTIONS="--max-old-space-size=1536"
 RUN npm run build
 
 # stage-2 production stage

@@ -28,3 +28,9 @@ README.md
 *.md
 .vscode
 .idea
+
+# Project-specific: 
+terraform-infra
+k8s
+scripts
+Jenkinsfile

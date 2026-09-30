@@ -54,7 +54,7 @@ resource "aws_security_group" "ec2_sg" {
 resource "aws_instance" "my_server" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
-  key_name               = "devops-key"
+  key_name               = "shubhamsecond"
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
   user_data              = file("${path.module}/install_tools.sh")
 
